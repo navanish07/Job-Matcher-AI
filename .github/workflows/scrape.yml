@@ -1,0 +1,44 @@
+name: Hourly LinkedIn Job Scraper # Name of the workflow displayed on GitHub
+
+on:
+  schedule:
+    - cron: '30 4 * * *'   # 10:00 AM IST
+    - cron: '30 5 * * *'   # 11:00 AM IST
+    - cron: '30 6 * * *'   # 12:00 PM IST
+    - cron: '30 7 * * *'   # 1:00 PM IST
+    - cron: '30 8 * * *'   # 2:00 PM IST
+    - cron: '30 9 * * *'   # 3:00 PM IST
+    - cron: '30 10 * * *'  # 4:00 PM IST
+    - cron: '30 11 * * *'  # 5:00 PM IST
+    - cron: '30 12 * * *'  # 6:00 PM IST
+    - cron: '30 13 * * *'  # 7:00 PM IST
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    name: Scrape LinkedIn Jobs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4 # downloads repository's code into the GitHub Actions runner
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm' # Cache npm dependencies for faster builds
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Scraper Script
+        run: node src/handler.js # Main script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
