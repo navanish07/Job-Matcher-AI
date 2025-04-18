@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Clear Playwright cache (if exists)
+        run: rm -rf /home/runner/.cache/ms-playwright
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
