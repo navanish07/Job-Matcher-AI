@@ -11,7 +11,8 @@ const tempFilePath = path.resolve('temp_linkedin_jobs.json');
 
 const keyword = "Software"
 // const LinkedinSearchUrl = `https://in.linkedin.com/jobs/search?keywords=${keyword}&location=India&f_TPR=r3600&position=1&pageNum=0`
-const LinkedinSearchUrl = "https://in.linkedin.com/jobs/search?keywords=JavaScript&location=India&geoId=102713980&f_TPR=r3600&original_referer=https%3A%2F%2Fin.linkedin.com%2Fjobs%2Fsearch%3Fkeywords%3DJavaScript%26location%3DIndia%26geoId%3D102713980%26trk%3Dpublic_jobs_jobs-search-bar_search-submit%26position%3D1%26pageNum%3D0&position=1&pageNum=0"
+// Location - Bglr & Hyd
+const LinkedinSearchUrl = "https://in.linkedin.com/jobs/search?keywords=JavaScript&location=India&geoId=102713980&f_TPR=r3600&f_PP=105214831%2C105556991&position=1&pageNum=0"
 
 
 // --- Helper Function: Delay ---
